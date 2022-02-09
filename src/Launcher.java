@@ -1,4 +1,9 @@
-import java.util.Scanner;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Launcher {
 
@@ -31,7 +36,33 @@ public class Launcher {
                 int res = fibo(nb);
                 System.out.println("F(" + nb + ") = " + res);
                 command = scanner.nextLine();
-            }else {
+            } else if (command.equals("freq")) {
+                System.out.println("Veuillez entrer un chemin vers un fichier :");
+                String path = scanner.nextLine();
+                Path filePath = Paths.get(path);
+                try {
+                    String content = Files.readString(filePath);
+                    if (content.isBlank()) {
+                        System.out.println("Votre fichier est vide !");
+                    } else {
+                        String[] words = content.replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+");
+                        List<String> occ = Arrays.stream(words)
+                                .collect(Collectors.groupingBy(s -> s, Collectors.counting()))
+                                .entrySet().stream()
+                                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                                .limit(3)
+                                .map(Map.Entry::getKey)
+                                .collect(Collectors.toList());
+                        System.out.println("Mots les plus utilisés :");
+                        occ.forEach(word -> {
+                            System.out.println(word);
+                        });
+                    }
+                }
+                catch (Exception e) {
+                    System.out.println("Unreadable file: " + e.getClass().getSimpleName() + " " + e.getMessage());
+                }
+            } else {
                 System.out.println("Unknown command");
             }
             System.out.println("Entrez votre commande :");
