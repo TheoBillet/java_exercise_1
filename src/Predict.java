@@ -44,7 +44,7 @@ public class Predict implements Command {
         List<String> words = new ArrayList<String>();
         for (int i = 0; i < listWords.length; i++) {
             if (listWords[i].equals(word) && (i + 1) != listWords.length) {
-                words.add(listWords[i]);
+                words.add(listWords[i + 1]);
             }
         }
         String[] arrayWords = new String[words.size()];
