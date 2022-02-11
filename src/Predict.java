@@ -30,10 +30,13 @@ public class Predict implements Command {
             }
             predictSentence.add(predictWord);
         }
-        predictSentence.forEach(word -> {
-            System.out.print(word + " ");
-        });
-        System.out.println();
+        for (int i = 0; i < predictSentence.size(); i++) {
+            if (i == predictSentence.size() - 1){
+                System.out.println(predictSentence.get(i));
+            } else {
+                System.out.print(predictSentence.get(i) + " ");
+            }
+        }
         return false;
     }
     public String predictWord(String word, String[] listWords) {

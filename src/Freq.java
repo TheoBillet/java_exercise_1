@@ -24,7 +24,7 @@ public class Freq implements  Command {
             if (i == popularWords.size() - 1){
                 System.out.println(popularWords.get(i));
             } else {
-                System.out.print(popularWords.get(i));
+                System.out.print(popularWords.get(i) + " ");
             }
         }
         return false;
