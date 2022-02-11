@@ -17,7 +17,7 @@ public class Predict implements Command {
         List<String> predictSentence = new ArrayList<String>();
         String[] words = Freq.wordsFile(content);
         System.out.println("Veuillez entrer un mot pour commencer la prédiction :");
-        String wordStart = scanner.nextLine();
+        String wordStart = scanner.nextLine().toLowerCase();
         if (!Arrays.asList(words).contains(wordStart)) {
             System.out.println("Attention votre mot n'est pas dans votre fichier !");
             return false;
