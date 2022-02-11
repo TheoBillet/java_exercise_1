@@ -20,10 +20,13 @@ public class Freq implements  Command {
         }
         String[] words = wordsFile(content);
         List<String> popularWords = mostWordUse(words);
-        System.out.println("Mots les plus utilisés :");
-        popularWords.forEach(word -> {
-            System.out.println(word);
-        });
+        for (int i = 0; i < popularWords.size(); i++) {
+            if (i == popularWords.size() - 1){
+                System.out.println(popularWords.get(i));
+            } else {
+                System.out.print(popularWords.get(i));
+            }
+        }
         return false;
     }
 

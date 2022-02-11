@@ -30,7 +30,6 @@ public class Predict implements Command {
             }
             predictSentence.add(predictWord);
         }
-        System.out.println("Phrase prédit :");
         predictSentence.forEach(word -> {
             System.out.print(word + " ");
         });
